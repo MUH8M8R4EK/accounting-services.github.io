@@ -11,19 +11,36 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="header-container">
-            <div class="lang-switcher">
-                <button class="lang-btn active" data-lang="ru">RU</button>
-                <button class="lang-btn" data-lang="en">EN</button>
+        <div class="header-capsule">
+            <div class="header-left">
+                <div class="lang-switcher">
+                    <span class="lang-label ru active">RU</span>
+                    <div class="lang-toggle">
+                        <div class="lang-toggle-bg"></div>
+                        <div class="lang-toggle-inner"></div>
+                        <div class="lang-toggle-knob"></div>
+                    </div>
+                    <span class="lang-label en">EN</span>
+                </div>
+                <div class="logo">
+                    <img src="Assets/Logo.svg" alt="Logo" class="logo-img">
+                </div>
             </div>
+            
             <div class="contact-info">
-                <a href="tel:+76624381905" class="phone">7(662) 438 19 05</a>
+                <a href="tel:+79062713548" class="phone">+7 (906) 271 35 48</a>
                 <div class="social-icons">
                     <a href="mailto:info@example.com" class="social-icon">
-                        <i class="fas fa-envelope"></i>
+                        <svg class="circle-icon" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="96" height="96" rx="48" fill="#354359"/>
+                            <path d="M19.0888 27.2432H76.9112C77.3449 27.2432 77.7539 27.29 78.1394 27.4053L54.4561 50.054C50.8904 53.4673 45.0861 53.4673 41.5204 50.054L17.8606 27.4053C18.2461 27.29 18.6551 27.2432 19.0888 27.2432ZM14.4397 30.6801L32.5562 47.9999L14.4397 65.3197C14.3192 64.9507 14.2703 64.5592 14.2703 64.1441V31.8558C14.2703 31.4406 14.3192 31.0491 14.4397 30.6801ZM81.5603 30.6801C81.6808 31.0491 81.7297 31.4406 81.7297 31.8558V64.1441C81.7297 64.5592 81.6808 64.9507 81.5603 65.3197L63.4202 47.9999L81.5603 30.6801ZM35.9537 51.2522L38.0994 53.3288C40.8219 55.9349 44.4108 57.2251 47.9765 57.2251C51.5663 57.2251 55.1311 55.9349 57.8535 53.3288L60.0228 51.2522L78.1394 68.5945C77.7539 68.7098 77.3449 68.7567 76.9112 68.7567H19.0888C18.6551 68.7567 18.2461 68.7098 17.8606 68.5945L35.9537 51.2522Z" fill="#F1F8FF"/>
+                        </svg>
                     </a>
                     <a href="https://t.me/your_telegram" target="_blank" class="social-icon">
-                        <i class="fab fa-telegram"></i>
+                        <svg class="circle-icon" width="97" height="96" viewBox="0 0 97 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.135254" width="96" height="96" rx="48" fill="#354359"/>
+                            <path d="M18.3822 45.8288C36.3461 37.812 59.5928 28.0378 62.8017 26.685C71.219 23.1443 73.8018 23.8228 72.514 31.6642C71.5892 37.3001 68.9207 55.9596 66.7938 67.5737C65.5317 74.461 62.7002 75.2773 58.2478 72.2976C56.1067 70.8636 45.2994 63.6139 42.9539 61.9116C40.8128 60.3602 37.8597 58.4941 41.5632 54.8185C42.881 53.5092 51.5199 45.1415 58.2507 38.6283C59.1326 37.7728 58.0248 36.3678 57.0071 37.0536C47.9351 43.1565 35.357 51.6271 33.7561 52.7305C31.3377 54.3965 29.015 55.1607 24.8456 53.9456C21.6954 53.0278 18.618 51.9331 17.4202 51.5155C12.8078 49.9089 13.9026 47.8282 18.3822 45.8288Z" fill="#F1F8FF"/>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -32,6 +49,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <canvas id="dot-grid"></canvas>
         <div class="hero-content">
             <div class="hero-text">
                 <h1 data-i18n="hero_title">Мы делаем учет понятным</h1>
@@ -48,7 +66,7 @@
     <!-- Services Section -->
     <section class="services">
         <div class="container">
-            <h2 class="section-title" data-i18n="services_title">Наши услуги</h2>
+            <h2 class="section-title" data-i18n="services_title">Услуги</h2>
             <div class="swiper services-swiper">
                 <div class="swiper-wrapper">
                     <!-- Service cards will be inserted by JavaScript -->
@@ -61,14 +79,12 @@
     <!-- Cases Section -->
     <section class="cases">
         <div class="container">
-            <h2 class="section-title" data-i18n="cases_title">Наши кейсы</h2>
+            <h2 class="section-title" data-i18n="cases_title">Кейсы</h2>
             <div class="swiper cases-swiper">
                 <div class="swiper-wrapper">
                     <!-- Case cards will be inserted by JavaScript -->
                 </div>
                 <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </section>
@@ -98,6 +114,7 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
 </body>
 </html>

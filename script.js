@@ -3,21 +3,45 @@ const translations = {
     ru: {
         hero_title: "Мы делаем учет понятным",
         hero_subtitle: "Ведем учет чтобы вы могли вести бизнес. Ваш бухгалтер, финансист и бизнес-наставник",
-        services_title: "Наши услуги",
-        cases_title: "Наши кейсы",
+        services_title: "Услуги",
+        cases_title: "Кейсы",
         proposal_title: "Экспресс-проверка бухгалтерского учета",
         proposal_text: "Бесплатно при заключении договора!",
         proposal_button: "Заказать аудит",
         footer_text: "© 2023 Financial Audit Pro. Все права защищены.",
         services: [
-            "Аудит и восстановление учета вашего бизнеса",
-            "Ведение бухгалтерского и налогового учета любой сложности",
-            "Юридические консультации анализ договоров и сделок",
-            "Ведение учета по ВЭД (импорт/экспорт)",
-            "Налоговая оптимизация и финансовое моделирование",
-            "Подбор кадров (свой метод тестирования и подбора персонала)",
-            "Защита и представление ваших интересов в ИФНС",
-            "Налоговые споры (не проиграно ни одного дела)"
+            {
+                title: "Аудит и восстановление учета вашего бизнеса",
+                description: "Полный анализ финансовой деятельности с восстановлением документации"
+            },
+            {
+                title: "Ведение бухгалтерского и налогового учета любой сложности",
+                description: "Профессиональное сопровождение вашей финансовой отчетности"
+            },
+            {
+                title: "Юридические консультации анализ договоров и сделок",
+                description: "Правовая экспертиза и сопровождение бизнес-операций"
+            },
+            {
+                title: "Ведение учета по ВЭД",
+                description: "Специализированное сопровождение внешнеэкономической деятельности"
+            },
+            {
+                title: "Налоговая оптимизация и финансовое моделирование",
+                description: "Разработка стратегий для минимизации налоговой нагрузки"
+            },
+            {
+                title: "Помощь в ведении бизнеса заграницей (ОАЭ)",
+                description: "Многолетний опыт сопровождения клиентов"
+            },
+            {
+                title: "Подбор кадров (свой метод тестирования и подбора персонала)",
+                description: "Поиск и оценка квалифицированных финансовых специалистов"
+            },
+            {
+                title: "Защита и представление ваших интересов в ИФНС",
+                description: "Профессиональное представительство в налоговых органах"
+            }
         ],
         cases: [
             {
@@ -40,21 +64,45 @@ const translations = {
     en: {
         hero_title: "We Make Accounting Understandable",
         hero_subtitle: "We handle accounting so you can run your business. Your accountant, financial advisor, and business mentor",
-        services_title: "Our Services",
-        cases_title: "Our Cases",
+        services_title: "Services",
+        cases_title: "Cases",
         proposal_title: "Express Accounting Check",
         proposal_text: "Free when signing a contract!",
         proposal_button: "Order Audit",
         footer_text: "© 2023 Financial Audit Pro. All rights reserved.",
         services: [
-            "Audit and restoration of your business accounting",
-            "Accounting and tax accounting of any complexity",
-            "Legal consultations, contract and deal analysis",
-            "Accounting for foreign economic activity (import/export)",
-            "Tax optimization and financial modeling",
-            "Personnel selection (proprietary testing method)",
-            "Protection and representation of your interests in tax authorities",
-            "Tax disputes (no cases lost)"
+            {
+                title: "Audit and restoration of your business accounting",
+                description: "Comprehensive financial activity analysis with documentation restoration"
+            },
+            {
+                title: "Accounting and tax accounting of any complexity",
+                description: "Professional management of your financial reporting"
+            },
+            {
+                title: "Legal consultations, contract and deal analysis",
+                description: "Legal expertise and business operations support"
+            },
+            {
+                title: "Accounting for foreign economic activity (import/export)",
+                description: "Specialized support for foreign economic activities"
+            },
+            {
+                title: "Tax optimization and financial modeling",
+                description: "Development of strategies to minimize tax burden"
+            },
+            {
+                title: "Assistance in doing business abroad (UAE)",
+                description: "Many years of experience in client support"
+            },
+            {
+                title: "Personnel selection (proprietary testing method)",
+                description: "Recruitment and assessment of qualified financial specialists"
+            },
+            {
+                title: "Protection and representation of your interests in tax authorities",
+                description: "Professional representation in tax authorities"
+            }
         ],
         cases: [
             {
@@ -80,20 +128,152 @@ const translations = {
 let currentLang = 'ru';
 let servicesSwiper = null;
 let casesSwiper = null;
+let solutionTimer = null;
 
 // Главная функция инициализации
 function initializeWebsite() {
-    // 1. Установка начального языка
+    // 1. Инициализация интерактивного фона
+    initDotGrid();
+    
+    // 2. Установка начального языка
     setActiveLanguageButton();
     
-    // 2. Генерация всего контента
+    // 3. Генерация всего контента
     generateAllContent();
     
-    // 3. Инициализация слайдеров
+    // 4. Инициализация слайдеров
     initializeSliders();
     
-    // 4. Настройка интерактивных элементов
+    // 5. Настройка интерактивных элементов
     setupInteractiveElements();
+    
+    // 6. Настройка анимаций при скролле
+    setupScrollAnimations();
+}
+
+// Инициализация интерактивной сетки точек
+function initDotGrid() {
+    const canvas = document.getElementById('dot-grid');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    let dots = [];
+    let mouse = { x: null, y: null, radius: 100 };
+    
+    // Обработчик движения мыши
+    canvas.addEventListener('mousemove', function(e) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    });
+    
+    canvas.addEventListener('mouseleave', function() {
+        mouse.x = null;
+        mouse.y = null;
+    });
+    
+    // Класс для точек
+    class Dot {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.size = Math.random() * 2 + 1;
+            this.baseSize = this.size;
+            this.speedX = Math.random() - 0.5;
+            this.speedY = Math.random() - 0.5;
+        }
+        
+        update() {
+            // Взаимодействие с курсором
+            if (mouse.x !== null && mouse.y !== null) {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < mouse.radius) {
+                    const force = (mouse.radius - distance) / mouse.radius;
+                    const angle = Math.atan2(dy, dx);
+                    const tx = this.x - Math.cos(angle) * force * 10;
+                    const ty = this.y - Math.sin(angle) * force * 10;
+                    
+                    this.x += (tx - this.x) * 0.1;
+                    this.y += (ty - this.y) * 0.1;
+                    this.size = this.baseSize + force * 3;
+                }
+            }
+            
+            // Движение точки
+            this.x += this.speedX * 0.2;
+            this.y += this.speedY * 0.2;
+            
+            // Возвращение точки в границы
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            
+            // Плавное возвращение к исходному размеру
+            if (this.size > this.baseSize) {
+                this.size -= 0.05;
+            }
+        }
+        
+        draw() {
+            ctx.fillStyle = 'rgba(50, 61, 75, 0.15)';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+    
+    // Создание точек
+    function createDots() {
+        dots = [];
+        const dotCount = Math.floor((canvas.width * canvas.height) / 2500);
+        
+        for (let i = 0; i < dotCount; i++) {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            dots.push(new Dot(x, y));
+        }
+    }
+    
+    // Анимация
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].update();
+            dots[i].draw();
+            
+            // Соединение точек
+            for (let j = i + 1; j < dots.length; j++) {
+                const dx = dots[i].x - dots[j].x;
+                const dy = dots[i].y - dots[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 100) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `rgba(124, 160, 202, ${0.2 - distance/500})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.moveTo(dots[i].x, dots[i].y);
+                    ctx.lineTo(dots[j].x, dots[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+    
+    // Изменение размера canvas
+    function resizeCanvas() {
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        createDots();
+    }
+    
+    // Инициализация
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    animate();
 }
 
 // Установка активной кнопки языка
@@ -143,6 +323,18 @@ function updateStaticContent() {
     });
 }
 
+// Иконки для услуг
+const serviceIcons = [
+    'file-chart-pie',
+    'calculator',
+    'file-search',
+    'globe',
+    'chart-pie',
+    'handshake',
+    'user-search',
+    'scale'
+];
+
 // Генерация карточек услуг
 function generateServiceCards() {
     const container = document.querySelector('.services-swiper .swiper-wrapper');
@@ -152,42 +344,79 @@ function generateServiceCards() {
     container.innerHTML = '';
     
     // Добавляем новые карточки
-    translations[currentLang].services.forEach(service => {
+    translations[currentLang].services.forEach((service, index) => {
         const slide = document.createElement('div');
         slide.className = 'swiper-slide';
         slide.innerHTML = `
             <div class="service-card">
-                <h3>${service}</h3>
-            </div>
-        `;
-        container.appendChild(slide);
-    });
-}
-
-// Генерация кейсов
-function generateCaseStudies() {
-    const container = document.querySelector('.cases-swiper .swiper-wrapper');
-    if (!container) return;
-    
-    // Очищаем контейнер
-    container.innerHTML = '';
-    
-    // Добавляем новые кейсы
-    translations[currentLang].cases.forEach(caseItem => {
-        const slide = document.createElement('div');
-        slide.className = 'swiper-slide';
-        slide.innerHTML = `
-            <div class="case-card">
-                <h3>${caseItem.title}</h3>
-                <p>${caseItem.description}</p>
-                <div class="solution">
-                    <strong>${currentLang === 'ru' ? 'Решение:' : 'Solution:'}</strong>
-                    <p>${caseItem.solution}</p>
+                <div class="service-card-inner">
+                    <div class="service-card-front">
+                        <div class="service-icon">
+                            <i data-lucide="${serviceIcons[index]}"></i>
+                        </div>
+                        <h3>${service.title}</h3>
+                    </div>
+                    <div class="service-card-back">
+                        <h3>${service.title}</h3>
+                        <p>${service.description}</p>
+                    </div>
                 </div>
             </div>
         `;
         container.appendChild(slide);
     });
+
+    // Инициализируем иконки Lucide
+    lucide.createIcons();
+}
+
+// Инициализация Swiper для услуг
+function initServicesSwiper() {
+    new Swiper('.services-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.services-swiper .swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+}
+
+// Генерация кейсов
+function generateCaseStudies() {
+    const caseStudies = currentLang === 'ru' ? translations[currentLang].cases : translations[currentLang].cases;
+    const casesContainer = document.querySelector('.cases-swiper .swiper-wrapper');
+    if (!casesContainer) return;
+
+    casesContainer.innerHTML = caseStudies.map((study, index) => `
+        <div class="swiper-slide">
+            <div class="case-card" data-case="${index}">
+                <div class="case-card-inner">
+                    <div class="case-card-front">
+                        <h3>${study.title}</h3>
+                        <p>${study.description}</p>
+                    </div>
+                    <div class="case-card-back">
+                        <h4><i class="fas fa-sync-alt"></i>Решение:</h4>
+                        <p>${study.solution}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
 }
 
 // Инициализация слайдеров
@@ -204,31 +433,7 @@ function initializeSliders() {
     }
     
     // Инициализация слайдера услуг
-    servicesSwiper = new Swiper('.services-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        grabCursor: true,
-        loop: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 2,
-            },
-            992: {
-                slidesPerView: 3,
-            },
-            1200: {
-                slidesPerView: 4,
-            }
-        }
-    });
+    initServicesSwiper();
 
     // Инициализация слайдера кейсов
     casesSwiper = new Swiper('.cases-swiper', {
@@ -245,9 +450,47 @@ function initializeSliders() {
             clickable: true,
         },
         breakpoints: {
+            576: {
+                slidesPerView: 1.1,
+            },
+            768: {
+                slidesPerView: 1.2,
+            },
             992: {
+                slidesPerView: 1.3,
+                centeredSlides: true,
+            },
+            1200: {
                 slidesPerView: 1.2,
                 centeredSlides: true,
+            }
+        },
+        // Автоматическое раскрытие решения при активации слайда
+        on: {
+            slideChange: function() {
+                // Отменяем предыдущий таймер
+                clearTimeout(solutionTimer);
+                
+                // Закрываем все решения
+                document.querySelectorAll('.solution-content').forEach(el => {
+                    el.classList.remove('active');
+                });
+                
+                // Сбрасываем все кнопки
+                document.querySelectorAll('.show-solution-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Автоматическое раскрытие через 2 секунды
+                const activeSlide = this.slides[this.activeIndex];
+                solutionTimer = setTimeout(() => {
+                    const solutionContent = activeSlide.querySelector('.solution-content');
+                    const solutionBtn = activeSlide.querySelector('.show-solution-btn');
+                    if (solutionContent && solutionBtn) {
+                        solutionContent.classList.add('active');
+                        solutionBtn.classList.add('active');
+                    }
+                }, 2000);
             }
         }
     });
@@ -255,22 +498,25 @@ function initializeSliders() {
 
 // Настройка интерактивных элементов
 function setupInteractiveElements() {
-    // 1. Переключатель языка
-    document.querySelectorAll('.lang-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            // Обновляем текущий язык
-            currentLang = this.dataset.lang;
-            
-            // Обновляем активную кнопку
-            setActiveLanguageButton();
-            
-            // Генерируем весь контент заново
-            generateAllContent();
-            
-            // Переинициализируем слайдеры
-            setTimeout(initializeSliders, 10);
-        });
-    });
+    // 1. Переключатель языка (кастомный)
+    const langSwitcher = document.querySelector('.lang-switcher');
+    const ruLabel = langSwitcher.querySelector('.lang-label.ru');
+    const enLabel = langSwitcher.querySelector('.lang-label.en');
+    const toggle = langSwitcher.querySelector('.lang-toggle');
+
+    function setLang(isRu) {
+        ruLabel.classList.toggle('active', isRu);
+        enLabel.classList.toggle('active', !isRu);
+        langSwitcher.classList.toggle('en-active', !isRu);
+        currentLang = isRu ? 'ru' : 'en';
+        setActiveLanguageButton();
+        generateAllContent();
+        setTimeout(initializeSliders, 10);
+    }
+
+    ruLabel.onclick = () => setLang(true);
+    enLabel.onclick = () => setLang(false);
+    toggle.onclick = () => setLang(!ruLabel.classList.contains('active'));
     
     // 2. Кнопка заказа аудита
     const ctaButton = document.querySelector('.cta-button');
@@ -282,6 +528,46 @@ function setupInteractiveElements() {
                 : 'Order Audit Form');
         });
     }
+
+    // 3. Переворот карточек кейсов
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.case-card')) {
+            const card = e.target.closest('.case-card');
+            card.classList.toggle('flipped');
+        }
+    });
+    
+    // 4. Мобильная навигация
+    document.querySelector('.prev-button')?.addEventListener('click', () => {
+        casesSwiper.slidePrev();
+    });
+    
+    document.querySelector('.next-button')?.addEventListener('click', () => {
+        casesSwiper.slideNext();
+    });
+}
+
+// Настройка анимаций при скролле
+function setupScrollAnimations() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Наблюдаем за элементами с анимацией
+    document.querySelectorAll('.section-title, .proposal-card').forEach(el => {
+        observer.observe(el);
+    });
 }
 
 // Запускаем инициализацию после полной загрузки DOM
