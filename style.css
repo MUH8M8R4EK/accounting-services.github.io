@@ -220,7 +220,8 @@ header {
 }
 
 .phone:hover {
-    color: var(--color-text-dark);
+    color: rgba(50, 65, 92, 0.8);
+    text-shadow: 0 0 15px rgba(53, 67, 89, 0.2);
 }
 
 
@@ -233,6 +234,16 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-2px);
+}
+
+.social-icon:active {
+    transform: translateY(1px);
 }
 
 .circle-icon {
@@ -240,10 +251,59 @@ header {
     width: 38px;
     height: 38px;
     display: block;
+    transition: all 0.3s ease;
 }
 
 .header-capsule .circle-icon path {
     fill: #F1F8FF !important;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover .circle-icon {
+    filter: brightness(1.2);
+    box-shadow: 0 0 15px rgba(53, 67, 89, 0.3);
+}
+
+.social-icon:hover .circle-icon path {
+    fill: #FFFFFF !important;
+}
+
+.social-icon:active .circle-icon {
+    filter: brightness(0.9);
+    box-shadow: 0 0 8px rgba(53, 67, 89, 0.2);
+}
+
+.social-icon:active .circle-icon path {
+    fill: #E6F0FF !important;
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 576px) {
+    .social-icon:hover {
+        transform: translateY(-1px);
+    }
+    
+    .social-icon:active {
+        transform: translateY(0.5px);
+    }
+    
+    .social-icon:hover .circle-icon {
+        box-shadow: 0 0 10px rgba(53, 67, 89, 0.2);
+    }
+}
+
+@media (max-width: 480px) {
+    .social-icon:hover {
+        transform: none;
+    }
+    
+    .social-icon:active {
+        transform: scale(0.95);
+    }
+    
+    .social-icon:hover .circle-icon {
+        box-shadow: 0 0 8px rgba(53, 67, 89, 0.15);
+    }
 }
 
 /* Hero Section */
@@ -363,6 +423,9 @@ header {
     padding: 0;
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .services::before {
@@ -371,11 +434,11 @@ header {
     top: 0;
     left: 16px;
     right: 16px;
-    bottom: 80px;
+    bottom: 140px;
     background: linear-gradient(135deg, 
-        rgba(11, 25, 48, 0.1) 100%,
-        rgba(46, 63, 90, 0.2) 50%,
-        rgba(27, 41, 63, 0.1) 100%);
+        #445772,
+        rgba(54, 73, 104, 0.9) 50%,
+        #445772);
     z-index: 1;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(5px);
@@ -385,11 +448,19 @@ header {
     position: relative;
     z-index: 2;
     padding-top: 80px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .services .section-title {
-    color: var(--color-accent);
+    color: var(--color-secondary);
     text-shadow: 0 0 15px rgba(53, 67, 89, 0.2);
+    text-align: center;
+    width: 100%;
 }
 
 .section-title {
@@ -408,12 +479,13 @@ header {
 
 .swiper {
     width: 100%;
-    max-width: 1920px;
+    max-width: 1400px;
     height: 60vh;
     padding: 20px 0 50px;
     overflow: visible !important;
     position: relative;
     z-index: 2;
+    margin: 0 auto;
 }
 
 .swiper-wrapper {
@@ -1153,16 +1225,54 @@ footer {
         width: 45px;
         height: 45px;
     }
-    .logo-img {
-        height: 28px;
-    }
-    .phone {
-        font-size: 13px;
-    }
-    .social-icon .circle-icon {
-        width: 22px;
-        height: 22px;
-    }
+}
+
+@media (max-width: 480px) {
+        /* Стили для переключателя содержимого header */
+        .lang-switcher {
+            gap: 8px;
+            height: 24px;
+        }
+    
+        .lang-label {
+            font-size: 18px;
+            line-height: 22px;
+        }
+    
+        .lang-toggle {
+            width: 46px;
+            height: 24px;
+        }
+    
+        .lang-toggle-bg {
+            width: 46px;
+            height: 24px;
+        }
+    
+        .lang-toggle-inner {
+            width: 44px;
+            height: 22px;
+            left: 1px;
+            top: 1px;
+        }
+    
+        .lang-toggle-knob {
+            width: 20px;
+            height: 20px;
+            top: 2px;
+            left: 2px;
+        }
+    
+        .lang-switcher.en-active .lang-toggle-knob {
+            left: 24px;
+        }
+    
+        .logo-img {
+            height: 28px;
+        }
+        .phone {
+            font-size: 13px;
+        }
 }
 
 @media (max-width: 320px) {
@@ -1208,6 +1318,11 @@ footer {
     .section-title {
         font-size: 1.6rem;
         margin-bottom: 20px;
+    }
+
+    .social-icon .circle-icon {
+        width: 24px;
+        height: 24px;
     }
 }
 
