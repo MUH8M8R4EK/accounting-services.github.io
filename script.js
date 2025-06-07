@@ -1,136 +1,25 @@
-// Локализация данных
-const translations = {
-    ru: {
-        hero_title: "Мы делаем учет понятным",
-        hero_subtitle: "Ведем учет, чтобы вы могли вести бизнес. Ваш бухгалтер, финансист и бизнес-наставник",
-        services_title: "Услуги",
-        cases_title: "Кейсы",
-        proposal_title: "Экспресс-проверка бухгалтерского учета",
-        proposal_text: "Бесплатно при заключении договора!",
-        proposal_button: "Заказать аудит",
-        footer_text: "© 2023 Financial Audit Pro. Все права защищены.",
-        services: [
-            {
-                title: "Аудит и восстановление учета вашего бизнеса",
-                description: "Полный анализ финансовой деятельности с восстановлением документации"
-            },
-            {
-                title: "Ведение бухгалтерского и налогового учета любой сложности",
-                description: "Профессиональное сопровождение вашей финансовой отчетности"
-            },
-            {
-                title: "Юридические консультации анализ договоров и сделок",
-                description: "Правовая экспертиза и сопровождение бизнес-операций"
-            },
-            {
-                title: "Ведение учета по ВЭД",
-                description: "Специализированное сопровождение внешнеэкономической деятельности"
-            },
-            {
-                title: "Налоговая оптимизация и финансовое моделирование",
-                description: "Разработка стратегий для минимизации налоговой нагрузки"
-            },
-            {
-                title: "Помощь в ведении бизнеса заграницей (ОАЭ)",
-                description: "Многолетний опыт сопровождения клиентов"
-            },
-            {
-                title: "Подбор кадров (свой метод тестирования и подбора персонала)",
-                description: "Поиск и оценка квалифицированных финансовых специалистов"
-            },
-            {
-                title: "Защита и представление ваших интересов в ИФНС",
-                description: "Профессиональное представительство в налоговых органах"
-            }
-        ],
-        cases: [
-            {
-                title: "Оптимизация налогообложения",
-                description: "Крупное оптовое предприятие обратилось к нам с проблемой: разработать оптимальную схему налогообложения и оптимизации расходов. Налоговая нагрузка была оценена в 20 000 000 рублей в квартал, что для предприятия являлось критическим фактором.",
-                solution: "Нашими специалистами были проанализированы все расходы (прямые и косвенные), выявлены проблемные точки и разработана стратегия, которую одобрил учредитель предприятия. Таким образом налоговая нагрузка снизилась до 8 000 000 рублей в квартал."
-            },
-            {
-                title: "Аудит перед приобретением бизнеса",
-                description: "К нам обратился собственник производственного предприятия с целью расширения своего бизнеса. Появилась потребность приобрести производственное предприятие в другом регионе, но были сомнения в финансовой стабильности и прибыльности. Доступ в учетную систему нам был дан удаленно.",
-                solution: "Наш специалист произвел полный аудит и финансовый анализ бизнеса. И заключил, что часть расходов умышленно скрывалась от покупателя и бизнес казался для него прибыльным. Была дана рекомендация не совершать покупку, т.к. в реальности предприятие являлось убыточным."
-            },
-            {
-                title: "Оспаривание налоговых доначислений",
-                description: "К нам обратилось крупное оптово-производственное предприятие с таким запросом: ФНС доначислила крупную сумму налога на добавленную стоимость, а так же налога на прибыль организаций по итогам двух прошедших лет. Штатная бухгалтерия оспорить доначисление не смогла.",
-                solution: "Наш эксперт проанализировал и осуществил экспресс-аудит бизнеса. По итогам аудита было установлено, что учет велся неверно в течение последних 2 лет. В результате нами был восстановлен учет, переформирована и сдана отчетность, оспорены налоговые доначисления, проведен подбор новых сотрудников и переформирован бухгалтерский отдел."
-            }
-        ]
-    },
-    en: {
-        hero_title: "We Make Accounting Understandable",
-        hero_subtitle: "We handle accounting so you can run your business. Your accountant, financial advisor, and business mentor",
-        services_title: "Services",
-        cases_title: "Cases",
-        proposal_title: "Express Accounting Check",
-        proposal_text: "Free when signing a contract!",
-        proposal_button: "Order Audit",
-        footer_text: "© 2023 Financial Audit Pro. All rights reserved.",
-        services: [
-            {
-                title: "Audit and restoration of your business accounting",
-                description: "Comprehensive financial activity analysis with documentation restoration"
-            },
-            {
-                title: "Accounting and tax accounting of any complexity",
-                description: "Professional management of your financial reporting"
-            },
-            {
-                title: "Legal consultations, contract and deal analysis",
-                description: "Legal expertise and business operations support"
-            },
-            {
-                title: "Accounting for foreign economic activity (import/export)",
-                description: "Specialized support for foreign economic activities"
-            },
-            {
-                title: "Tax optimization and financial modeling",
-                description: "Development of strategies to minimize tax burden"
-            },
-            {
-                title: "Assistance in doing business abroad (UAE)",
-                description: "Many years of experience in client support"
-            },
-            {
-                title: "Personnel selection (proprietary testing method)",
-                description: "Recruitment and assessment of qualified financial specialists"
-            },
-            {
-                title: "Protection and representation of your interests in tax authorities",
-                description: "Professional representation in tax authorities"
-            }
-        ],
-        cases: [
-            {
-                title: "Tax Optimization",
-                description: "A large wholesale enterprise approached us with a problem: to develop an optimal taxation scheme and optimize expenses. The tax burden was estimated at 20,000,000 rubles per quarter, which was a critical factor for the enterprise.",
-                solution: "Our specialists analyzed all expenses (direct and indirect), identified problem areas, and developed a strategy approved by the founder of the enterprise. As a result, the tax burden decreased to 8,000,000 rubles per quarter."
-            },
-            {
-                title: "Pre-Acquisition Audit",
-                description: "The owner of a manufacturing enterprise approached us to expand his business. There was a need to acquire a manufacturing enterprise in another region, but there were doubts about financial stability and profitability. We were given remote access to the accounting system.",
-                solution: "Our specialist conducted a full audit and financial analysis of the business. It was concluded that some expenses were deliberately hidden from the buyer, making the business appear profitable. We recommended not to proceed with the purchase as the enterprise was actually unprofitable."
-            },
-            {
-                title: "Contesting Tax Assessments",
-                description: "A large wholesale and manufacturing enterprise approached us with a request: the tax authority had assessed a significant amount of VAT and corporate income tax for the past two years. The in-house accounting department could not challenge the assessment.",
-                solution: "Our expert analyzed and conducted an express audit of the business. The audit revealed that accounting had been incorrect for the past 2 years. As a result, we restored the accounting, reissued and submitted reports, challenged the tax assessments, recruited new staff, and reorganized the accounting department."
-            }
-        ]
-    }
-};
-
 // Глобальные переменные
 let currentLang = 'ru';
 let servicesSwiper = null;
 let casesSwiper = null;
 let solutionTimer = null;
 
-// Главная функция инициализации
+// Иконки для услуг
+const serviceIcons = [
+    'file-chart-pie',
+    'calculator',
+    'file-search',
+    'globe',
+    'chart-pie',
+    'handshake',
+    'user-search',
+    'scale'
+];
+
+/**
+ * Главная функция инициализации сайта
+ * Выполняет все необходимые настройки при загрузке страницы
+ */
 function initializeWebsite() {
     // 1. Инициализация интерактивного фона
     initDotGrid();
@@ -138,20 +27,27 @@ function initializeWebsite() {
     // 2. Установка начального языка
     setActiveLanguageButton();
     
-    // 3. Генерация всего контента
+    // 3. Генерация карточек (только при первой загрузке)
+    generateServiceCards();
+    generateCaseStudies();
+    
+    // 4. Генерация всего контента
     generateAllContent();
     
-    // 4. Инициализация слайдеров
+    // 5. Инициализация слайдеров
     initializeSliders();
     
-    // 5. Настройка интерактивных элементов
+    // 6. Настройка интерактивных элементов
     setupInteractiveElements();
     
-    // 6. Настройка анимаций при скролле
+    // 7. Настройка анимаций при скролле
     setupScrollAnimations();
 }
 
-// Инициализация интерактивной сетки точек
+/**
+ * Инициализация интерактивной сетки точек
+ * Создает анимированный фон с точками, реагирующими на движение мыши
+ */
 function initDotGrid() {
     const canvas = document.getElementById('dot-grid');
     if (!canvas) return;
@@ -276,7 +172,9 @@ function initDotGrid() {
     animate();
 }
 
-// Установка активной кнопки языка
+/**
+ * Установка активной кнопки языка
+ */
 function setActiveLanguageButton() {
     document.querySelectorAll('.lang-btn').forEach(btn => {
         if (btn.dataset.lang === currentLang) {
@@ -287,19 +185,24 @@ function setActiveLanguageButton() {
     });
 }
 
-// Генерация всего контента
+/**
+ * Генерация всего контента
+ * Обновляет все текстовые элементы на странице в соответствии с текущим языком
+ */
 function generateAllContent() {
     // 1. Обновление статического текста
     updateStaticContent();
     
-    // 2. Генерация карточек услуг
-    generateServiceCards();
+    // 2. Обновление текста в карточках услуг
+    updateServiceCardsContent();
     
-    // 3. Генерация кейсов
-    generateCaseStudies();
+    // 3. Обновление текста в кейсах
+    updateCaseStudiesContent();
 }
 
-// Обновление статического текста
+/**
+ * Обновление статического текста
+ */
 function updateStaticContent() {
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
@@ -323,25 +226,44 @@ function updateStaticContent() {
     });
 }
 
-// Иконки для услуг
-const serviceIcons = [
-    'file-chart-pie',
-    'calculator',
-    'file-search',
-    'globe',
-    'chart-pie',
-    'handshake',
-    'user-search',
-    'scale'
-];
+/**
+ * Обновление текста в карточках услуг
+ */
+function updateServiceCardsContent() {
+    const serviceCards = document.querySelectorAll('.service-card h3');
+    translations[currentLang].services.forEach((service, index) => {
+        if (serviceCards[index]) {
+            serviceCards[index].textContent = service.title;
+        }
+    });
+}
 
-// Генерация карточек услуг
+/**
+ * Обновление текста в кейсах
+ */
+function updateCaseStudiesContent() {
+    const caseCards = document.querySelectorAll('.case-card');
+    translations[currentLang].cases.forEach((study, index) => {
+        if (caseCards[index]) {
+            const frontTitle = caseCards[index].querySelector('.case-card-front h3');
+            const frontDescription = caseCards[index].querySelector('.case-card-front p');
+            const backTitle = caseCards[index].querySelector('.case-card-back h4');
+            const backSolution = caseCards[index].querySelector('.case-card-back p');
+            
+            if (frontTitle) frontTitle.textContent = study.title;
+            if (frontDescription) frontDescription.textContent = study.description;
+            if (backTitle) backTitle.innerHTML = `<i class="fas fa-sync-alt"></i>${translations[currentLang].solution_text}`;
+            if (backSolution) backSolution.textContent = study.solution;
+        }
+    });
+}
+
+/**
+ * Генерация карточек услуг (только при первой загрузке)
+ */
 function generateServiceCards() {
     const container = document.querySelector('.services-swiper .swiper-wrapper');
-    if (!container) return;
-    
-    // Очищаем контейнер
-    container.innerHTML = '';
+    if (!container || container.children.length > 0) return;
     
     // Добавляем новые карточки
     translations[currentLang].services.forEach((service, index) => {
@@ -349,18 +271,10 @@ function generateServiceCards() {
         slide.className = 'swiper-slide';
         slide.innerHTML = `
             <div class="service-card">
-                <div class="service-card-inner">
-                    <div class="service-card-front">
-                        <div class="service-icon">
-                            <i data-lucide="${serviceIcons[index]}"></i>
-                        </div>
-                        <h3>${service.title}</h3>
-                    </div>
-                    <div class="service-card-back">
-                        <h3>${service.title}</h3>
-                        <p>${service.description}</p>
-                    </div>
+                <div class="service-icon">
+                    <i data-lucide="${serviceIcons[index]}"></i>
                 </div>
+                <h3>${service.title}</h3>
             </div>
         `;
         container.appendChild(slide);
@@ -370,39 +284,18 @@ function generateServiceCards() {
     lucide.createIcons();
 }
 
-// Инициализация Swiper для услуг
-function initServicesSwiper() {
-    new Swiper('.services-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.services-swiper .swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 2,
-            },
-            1024: {
-                slidesPerView: 3,
-            },
-        },
-    });
-}
-
-// Генерация кейсов
+/**
+ * Генерация кейсов (только при первой загрузке)
+ */
 function generateCaseStudies() {
-    const caseStudies = currentLang === 'ru' ? translations[currentLang].cases : translations[currentLang].cases;
     const casesContainer = document.querySelector('.cases-swiper .swiper-wrapper');
-    if (!casesContainer) return;
+    if (!casesContainer || casesContainer.children.length > 0) return;
 
-    casesContainer.innerHTML = caseStudies.map((study, index) => `
-        <div class="swiper-slide">
+    const caseStudies = translations[currentLang].cases;
+    caseStudies.forEach((study, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        slide.innerHTML = `
             <div class="case-card" data-case="${index}">
                 <div class="case-card-inner">
                     <div class="case-card-front">
@@ -410,93 +303,119 @@ function generateCaseStudies() {
                         <p>${study.description}</p>
                     </div>
                     <div class="case-card-back">
-                        <h4><i class="fas fa-sync-alt"></i>Решение:</h4>
+                        <h4><i class="fas fa-sync-alt"></i>${translations[currentLang].solution_text}</h4>
                         <p>${study.solution}</p>
                     </div>
                 </div>
             </div>
-        </div>
-    `).join('');
-}
-
-// Инициализация слайдеров
-function initializeSliders() {
-    // Уничтожаем старые слайдеры, если есть
-    if (servicesSwiper) {
-        servicesSwiper.destroy(true, true);
-        servicesSwiper = null;
-    }
-    
-    if (casesSwiper) {
-        casesSwiper.destroy(true, true);
-        casesSwiper = null;
-    }
-    
-    // Инициализация слайдера услуг
-    initServicesSwiper();
-
-    // Инициализация слайдера кейсов
-    casesSwiper = new Swiper('.cases-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        grabCursor: true,
-        loop: true,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            576: {
-                slidesPerView: 1.1,
-            },
-            768: {
-                slidesPerView: 1.2,
-            },
-            992: {
-                slidesPerView: 1.3,
-                centeredSlides: true,
-            },
-            1200: {
-                slidesPerView: 1.2,
-                centeredSlides: true,
-            }
-        },
-        // Автоматическое раскрытие решения при активации слайда
-        on: {
-            slideChange: function() {
-                // Отменяем предыдущий таймер
-                clearTimeout(solutionTimer);
-                
-                // Закрываем все решения
-                document.querySelectorAll('.solution-content').forEach(el => {
-                    el.classList.remove('active');
-                });
-                
-                // Сбрасываем все кнопки
-                document.querySelectorAll('.show-solution-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                // Автоматическое раскрытие через 2 секунды
-                const activeSlide = this.slides[this.activeIndex];
-                solutionTimer = setTimeout(() => {
-                    const solutionContent = activeSlide.querySelector('.solution-content');
-                    const solutionBtn = activeSlide.querySelector('.show-solution-btn');
-                    if (solutionContent && solutionBtn) {
-                        solutionContent.classList.add('active');
-                        solutionBtn.classList.add('active');
-                    }
-                }, 2000);
-            }
-        }
+        `;
+        casesContainer.appendChild(slide);
     });
 }
 
-// Настройка интерактивных элементов
+/**
+ * Инициализация слайдеров
+ */
+function initializeSliders() {
+    // Инициализация слайдера услуг
+    if (!servicesSwiper) {
+        servicesSwiper = new Swiper('.services-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+                waitForTransition: true
+            },
+            pagination: {
+                el: '.services-swiper .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+            grabCursor: true,
+            centeredSlides: false,
+            watchSlidesProgress: true,
+            slideToClickedSlide: true
+        });
+    }
+
+    // Инициализация слайдера кейсов
+    if (!casesSwiper) {
+        casesSwiper = new Swiper('.cases-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            speed: 1000,
+            grabCursor: true,
+            centeredSlides: false,
+            watchSlidesProgress: true,
+            slideToClickedSlide: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 5,
+                },
+                576: {
+                    slidesPerView: 1,
+                    spaceBetween: 8,
+                },
+                768: {
+                    slidesPerView: 1,
+                    spaceBetween: 12,
+                },
+                992: {
+                    slidesPerView: 1,
+                    spaceBetween: 25,
+                },
+                1200: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                }
+            },
+            on: {
+                slideChange: function() {
+                    clearTimeout(solutionTimer);
+                    document.querySelectorAll('.solution-content').forEach(el => {
+                        el.classList.remove('active');
+                    });
+                    document.querySelectorAll('.show-solution-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    const activeSlide = this.slides[this.activeIndex];
+                    solutionTimer = setTimeout(() => {
+                        const solutionContent = activeSlide.querySelector('.solution-content');
+                        const solutionBtn = activeSlide.querySelector('.show-solution-btn');
+                        if (solutionContent && solutionBtn) {
+                            solutionContent.classList.add('active');
+                            solutionBtn.classList.add('active');
+                        }
+                    }, 2000);
+                }
+            }
+        });
+    }
+}
+
+/**
+ * Настройка интерактивных элементов
+ */
 function setupInteractiveElements() {
     // 1. Переключатель языка (кастомный)
     const langSwitcher = document.querySelector('.lang-switcher');
@@ -547,7 +466,9 @@ function setupInteractiveElements() {
     });
 }
 
-// Настройка анимаций при скролле
+/**
+ * Настройка анимаций при скролле
+ */
 function setupScrollAnimations() {
     const observerOptions = {
         root: null,
