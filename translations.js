@@ -59,9 +59,9 @@ const translations = {
         hero_subtitle: "We handle accounting so you can run your business. Your accountant, financial advisor, and business mentor",
         services_title: "Services",
         cases_title: "Cases",
-        proposal_title: "Express Accounting Check",
-        proposal_text: "Free when signing a contract!",
-        proposal_button: "Order Audit",
+        proposal_title: "Express audit of your accounting",
+        proposal_text: "Sign a contract and get for free!",
+        proposal_button: "Order an Audit",
         footer_text: "© 2023 Bukhekspert78. All rights reserved.",
         solution_text: "Solution:",
         services: [
@@ -81,7 +81,7 @@ const translations = {
                 title: "Tax optimization and financial modeling"
             },
             {
-                title: "Assistance in doing business abroad (UAE)"
+                title: "Business Assistance abroad (UAE)"
             },
             {
                 title: "Personnel selection (proprietary testing method)"
@@ -99,12 +99,12 @@ const translations = {
             {
                 title: "Pre-Acquisition Audit",
                 description: "The owner of a manufacturing enterprise approached us to expand his business. There was a need to acquire a manufacturing enterprise in another region, but there were doubts about financial stability and profitability. We were given remote access to the accounting system.",
-                solution: "Our specialist conducted a full audit and financial analysis of the business. It was concluded that some expenses were deliberately hidden from the buyer, making the business appear profitable. We recommended not to proceed with the purchase as the enterprise was actually unprofitable."
+                solution: "Our specialist conducted a full audit and financial analysis of the business. It was concluded that some expenses were deliberately hidden from the buyer, making the business appear profitable. We recommended against the purchase as the enterprise was actually unprofitable."
             },
             {
                 title: "Contesting Tax Assessments",
-                description: "A large wholesale and manufacturing enterprise approached us with a request: the tax authority had assessed a significant amount of VAT and corporate income tax for the past two years. The in-house accounting department could not challenge the assessment.",
-                solution: "Our expert analyzed and conducted an express audit of the business. The audit revealed that accounting had been incorrect for the past 2 years. As a result, we restored the accounting, reissued and submitted reports, challenged the tax assessments, recruited new staff, and reorganized the accounting department."
+                description: "A large wholesale and manufacturing enterprise approached us with a request: the tax authority had assessed a significant amount of VAT and corporate income tax for the past two years. The full-time accounting department could not dispute the assessment.",
+                solution: "Our expert analyzed and made an express audit of the business. The audit revealed that accounting had been incorrect for the past 2 years. As a result, we restored the accounting from zero, reissued and submitted reports, dispute the tax assessments, recruited new staff, and reorganized the accounting department."
             }
         ]
     }
