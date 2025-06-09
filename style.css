@@ -1129,16 +1129,6 @@ footer {
     margin-bottom: 10px;
 }
 
-.footer-created-by {
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    text-transform: uppercase;
-    color: #04101C;
-}
-
 /* Пагинация */
 .swiper-pagination-bullet {
     background: var(--color-accent) !important;
@@ -1298,11 +1288,6 @@ footer {
         line-height: 34px;
     }
 
-    .footer-created-by {
-        font-size: 18px;
-        line-height: 22px;
-    }
-
     .cases::before {
         top: 55%;
         height: 65vh;
@@ -1366,6 +1351,10 @@ footer {
     .social-icon .circle-icon {
         width: 30px;
         height: 30px;
+    }
+
+    .mouse {
+        display: none;
     }
     
     .cases {
@@ -1440,11 +1429,6 @@ footer {
     .footer-copyright {
         font-size: 22px;
         line-height: 28px;
-    }
-
-    .footer-created-by {
-        font-size: 14px;
-        line-height: 18px;
     }
 
     .cases::before {
@@ -1564,11 +1548,6 @@ footer {
         line-height: 24px;
     }
 
-    .footer-created-by {
-        font-size: 12px;
-        line-height: 16px;
-    }
-
     .cases::before {
         height: 75vh;
     }
@@ -1667,11 +1646,6 @@ footer {
     .footer-copyright {
         font-size: 18px;
         line-height: 24px;
-    }
-
-    .footer-created-by {
-        font-size: 12px;
-        line-height: 16px;
     }
 
     .cases::before {
@@ -1905,6 +1879,42 @@ footer {
 
     .service-card,
     .case-card {
+        transform: translateY(10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-main-title {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        line-height: 1.3;
+        margin-bottom: 30px;
+        transform: translateY(20px);
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-main-title {
+        font-size: clamp(1.8rem, 4.5vw, 3rem);
+        margin-bottom: 25px;
+        transform: translateY(15px);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-main-title {
+        font-size: clamp(1.6rem, 5vw, 2.5rem);
+        margin-bottom: 20px;
+        transform: translateY(15px);
+    }
+}
+
+@media (max-width: 320px) {
+    .hero-main-title {
+        font-size: clamp(1.4rem, 5vw, 2.2rem);
+        margin-bottom: 15px;
         transform: translateY(10px);
     }
 }
