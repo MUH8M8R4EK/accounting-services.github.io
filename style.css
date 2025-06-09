@@ -380,7 +380,7 @@ header {
 
 .hero-card-text {
     position: absolute;
-    bottom: 400px;
+    bottom: 350px;
     left: 0;
     right: 0;
     transform: none;
@@ -739,20 +739,15 @@ header {
     display: flex;
     flex-direction: column;
     background: var(--color-card-bg);
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.15),
-        0 5px 15px rgba(0, 0, 0, 0.1),
-        inset 0 2px 5px rgba(255, 255, 255, 0.2);
-    transition: all 0.6s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.6s ease;
     border: 1px solid rgba(255, 255, 255, 0.4);
     overflow: visible;
     transform: none;
 }
 
 .case-card-front:hover {
-    transform: translateY(-5px) scale(1.02);
-    filter: brightness(1.2);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 2px 5px rgba(255, 255, 255, 0.4);
+    transform: translateY(-5px);
 }
 
 .case-card-front h3 {
@@ -767,7 +762,7 @@ header {
     letter-spacing: 0.3px;
     text-align: left;
     cursor: pointer;
-    transition: transform 0.3s ease-out, filter 0.3s ease-out, box-shadow 0.3s ease-out;
+    transition: all 0.3s ease-out;
     position: relative;
     z-index: 10;
     will-change: transform, filter, box-shadow;
@@ -893,16 +888,14 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80vh;
-    height: 80vh;
+    width: 60vh;
+    height: 60vh;
     background-image: url('Assets/logo.svg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.3;
+    opacity: 0.15;
     z-index: 1;
-    filter: brightness(0) saturate(100%) invert(37%) sepia(15%) saturate(1234%) hue-rotate(182deg) brightness(89%) contrast(85%);
-    -webkit-filter: brightness(0) saturate(100%) invert(37%) sepia(15%) saturate(1234%) hue-rotate(182deg) brightness(89%) contrast(85%);
 }
 
 .proposal-content {
@@ -1171,6 +1164,10 @@ footer {
     .swiper-slide {
         padding: 0 15px;
     }
+
+    .hero-card-text {
+        bottom: 400px;
+    }
 }
 
 @media (max-width: 1199px) {
@@ -1369,22 +1366,18 @@ footer {
     }
     
     .case-card-front {
-        transform: translateZ(25px);
+        padding: 20px 15px;
+    }
+    
+    .case-card-front h3 {
+        font-size: 1.5rem;
+        padding: 12px;
     }
     
     .case-card-back {
         transform: rotateY(180deg) translateZ(25px);
     }
 
-    .case-card-front, 
-    .case-card-back {
-        padding: 20px 15px;
-    }
-
-    .case-card-back h3 {
-        font-size: 1.5rem;
-    }
-    
     .case-card-back h4 {
         font-size: 1.1rem;
         margin-bottom: 12px;
@@ -1432,8 +1425,8 @@ footer {
     }
 
     .proposal::before {
-        width: 90vw;
-        height: 90vw;
+        width: 70vw;
+        height: 70vw;
     }
 
     .hero-content-wrapper {
@@ -1454,7 +1447,7 @@ footer {
     }
 
     .hero-card-text {
-        bottom: 400px;
+        bottom: 240px;
         max-width: 90%;
         padding: 15px 25px;
     }
@@ -1505,23 +1498,35 @@ footer {
         padding: 0 2px;
     }
 
-    .case-card-front, 
-    .case-card-back {
+    .case-card-front {
         padding: 15px 12px;
+    }
+    
+    .case-card-front h3 {
+        font-size: 1.3rem;
+        padding: 10px;
+    }
+    
+    .case-card-back {
+        transform: rotateY(180deg) translateZ(25px);
     }
 
     .case-card-back h3 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
     
     .case-card-back h4 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    
+    .case-card-back h4 i {
         font-size: 1rem;
-        margin-bottom: 10px;
     }
     
     .case-card-back p {
-        font-size: 0.95rem;
-        padding: 12px;
+        font-size: 1rem;
+        padding: 15px;
     }
 
     footer {
@@ -1557,8 +1562,8 @@ footer {
     }
 
     .proposal::before {
-        width: 90vw;
-        height: 90vw;
+        width: 80vw;
+        height: 80vw;
     }
 
     .proposal p {
@@ -1566,7 +1571,7 @@ footer {
     }
 
     .hero-card-text {
-        bottom: 380px;
+        bottom: 140px;
         max-width: 85%;
         padding: 12px 20px;
     }
@@ -1662,8 +1667,8 @@ footer {
     }
 
     .proposal::before {
-        width: 90vw;
-        height: 90vw;
+        width: 85vw;
+        height: 85vw;
     }
 
     .proposal p {
@@ -1684,7 +1689,7 @@ footer {
     }
 
     .hero-card-text {
-        bottom: 400px;
+        bottom: 100px;
         max-width: 80%;
         padding: 10px 15px;
     }
@@ -1757,13 +1762,21 @@ footer {
         padding: 0 1px;
     }
 
-    .case-card-front, 
-    .case-card-back {
+    .case-card-front {
         padding: 12px 10px;
     }
 
-    .case-card-back h3 {
+    .case-card-front h3 {
         font-size: 1.2rem;
+        padding: 8px;
+    }
+    
+    .case-card-back {
+        transform: rotateY(180deg) translateZ(25px);
+    }
+
+    .case-card-back h3 {
+        font-size: 1.5rem;
     }
     
     .case-card-back h4 {
@@ -1809,7 +1822,7 @@ footer {
     }
 
     .hero-card-text {
-        bottom: 420px;
+        bottom: 100px;
         max-width: 90%;
         padding: 8px 10px;
     }
