@@ -55,7 +55,7 @@ const translations = {
         ]
     },
     en: {
-        hero_title: "We Make Accounting Understandable",
+        hero_title: "We Make Accounting Сlear",
         hero_subtitle: "We handle accounting so you can run your business. Your accountant, financial advisor, and business mentor",
         services_title: "Services",
         cases_title: "Cases",

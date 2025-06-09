@@ -484,19 +484,36 @@ function setupScrollAnimations() {
         rootMargin: '0px',
         threshold: 0.1
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.animationPlayState = 'running';
-                observer.unobserve(entry.target);
+                entry.target.classList.add('visible');
+                if (entry.target.classList.contains('section-title')) {
+                    const cards = entry.target.closest('section').querySelectorAll('.service-card, .case-card');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, 100 * index);
+                    });
+                }
             }
         });
     }, observerOptions);
-    
-    // Наблюдаем за элементами с анимацией
-    document.querySelectorAll('.section-title, .proposal-card').forEach(el => {
-        observer.observe(el);
+
+    // Наблюдаем за секциями
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Наблюдаем за заголовками
+    document.querySelectorAll('.section-title, .hero-main-title, .hero-card-text').forEach(element => {
+        observer.observe(element);
+    });
+
+    // Наблюдаем за карточками
+    document.querySelectorAll('.service-card, .case-card, .proposal-card').forEach(card => {
+        observer.observe(card);
     });
 }
 
