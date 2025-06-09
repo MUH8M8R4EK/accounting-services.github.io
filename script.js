@@ -218,9 +218,9 @@ function updateStaticContent() {
                     </div>
                 `;
             } 
-            // Обычный текст
+            // Обычный текст (используем innerHTML для поддержки <br/>)
             else {
-                element.textContent = translation;
+                element.innerHTML = translation;
             }
         }
     });
@@ -463,6 +463,15 @@ function setupInteractiveElements() {
     
     document.querySelector('.next-button')?.addEventListener('click', () => {
         casesSwiper.slideNext();
+    });
+
+    // Обработчик клика по карточке услуги
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', () => {
+            // Плавная прокрутка к секции proposal
+            const proposalSection = document.querySelector('.proposal');
+            proposalSection.scrollIntoView({ behavior: 'smooth' });
+        });
     });
 }
 

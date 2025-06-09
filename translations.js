@@ -2,13 +2,13 @@
 const translations = {
     ru: {
         hero_title: "Мы делаем учет понятным",
-        hero_subtitle: "Ведем учет, чтобы вы могли вести бизнес. Ваш бухгалтер, финансист и бизнес-наставник",
+        hero_subtitle: "Ведем учет, чтобы вы могли вести бизнес.<br/>Ваш бухгалтер, финансист и бизнес-наставник",
         services_title: "Услуги",
         cases_title: "Кейсы",
         proposal_title: "Экспресс-проверка бухгалтерского учета",
         proposal_text: "Бесплатно при заключении договора!",
         proposal_button: "Заказать аудит",
-        footer_text: "© 2023 Financial Audit Pro. Все права защищены.",
+        footer_text: "© 2023 Bukhekspert78. Все права защищены.",
         solution_text: "Решение:",
         services: [
             {
@@ -62,7 +62,7 @@ const translations = {
         proposal_title: "Express Accounting Check",
         proposal_text: "Free when signing a contract!",
         proposal_button: "Order Audit",
-        footer_text: "© 2023 Financial Audit Pro. All rights reserved.",
+        footer_text: "© 2023 Bukhekspert78. All rights reserved.",
         solution_text: "Solution:",
         services: [
             {
