@@ -437,18 +437,7 @@ function setupInteractiveElements() {
     enLabel.onclick = () => setLang(false);
     toggle.onclick = () => setLang(!ruLabel.classList.contains('active'));
     
-    // 2. Кнопка заказа аудита
-    const ctaButton = document.querySelector('.cta-button');
-    if (ctaButton) {
-        ctaButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            alert(currentLang === 'ru' 
-                ? 'Форма заказа аудита' 
-                : 'Order Audit Form');
-        });
-    }
-
-    // 3. Переворот карточек кейсов
+    // 2. Переворот карточек кейсов
     document.addEventListener('click', function(e) {
         if (e.target.closest('.case-card')) {
             const card = e.target.closest('.case-card');
