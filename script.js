@@ -484,7 +484,7 @@ function setupScrollAnimations() {
         rootMargin: '0px',
         threshold: 0.1
     };
-
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -503,7 +503,7 @@ function setupScrollAnimations() {
             }
         });
     }, observerOptions);
-
+    
     // Наблюдаем за секциями
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);

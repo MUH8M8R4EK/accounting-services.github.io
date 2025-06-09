@@ -902,7 +902,7 @@ header {
     transform: translate(-50%, -50%);
     width: 80vh;
     height: 80vh;
-    background-image: url('Assets/logo.svg');
+    background-image: url('Assets/Logo.svg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -915,7 +915,7 @@ header {
 }
 
 .proposal.visible::before {
-    opacity: 0.15;
+    opacity: 0.5;
     z-index: 1;
 }
 
