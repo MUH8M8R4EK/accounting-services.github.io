@@ -902,13 +902,15 @@ header {
     transform: translate(-50%, -50%);
     width: 80vh;
     height: 80vh;
-    background-image: url('./Assets/logo.svg');
+    background-image: url('Assets/Logo.svg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0;
     z-index: 1;
-    transition: var(--transition-smooth);
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
 }
 
 .proposal.visible::before {

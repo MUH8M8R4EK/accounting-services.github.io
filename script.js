@@ -497,6 +497,9 @@ function setupScrollAnimations() {
                         }, 100 * index);
                     });
                 }
+            } else {
+                // Удаляем класс visible при выходе из области видимости
+                entry.target.classList.remove('visible');
             }
         });
     }, observerOptions);
