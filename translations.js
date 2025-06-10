@@ -9,6 +9,7 @@ const translations = {
         proposal_text: "Бесплатно при заключении договора!",
         proposal_button: "Заказать аудит",
         footer_text: "© 2023 Bukhekspert78. Все права защищены.",
+        privacy_policy: "Политика обработки персональных данных",
         solution_text: "Решение:",
         services: [
             {
@@ -63,6 +64,7 @@ const translations = {
         proposal_text: "Sign a contract and get for free!",
         proposal_button: "Order an Audit",
         footer_text: "© 2023 Bukhekspert78. All rights reserved.",
+        privacy_policy: "Privacy Policy",
         solution_text: "Solution:",
         services: [
             {

@@ -1129,6 +1129,23 @@ footer {
     margin-bottom: 10px;
 }
 
+.privacy-policy-link {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #04101C;
+    text-decoration: none;
+    transition: var(--transition);
+    opacity: 0.8;
+}
+
+.privacy-policy-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
 /* Пагинация */
 .swiper-pagination-bullet {
     background: var(--color-accent) !important;
