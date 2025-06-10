@@ -230,10 +230,17 @@ function updateStaticContent() {
  * Обновление текста в карточках услуг
  */
 function updateServiceCardsContent() {
-    const serviceCards = document.querySelectorAll('.service-card h3');
-    translations[currentLang].services.forEach((service, index) => {
-        if (serviceCards[index]) {
-            serviceCards[index].textContent = service.title;
+    // Получаем все карточки услуг
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+        const serviceIndex = card.getAttribute('data-service-index');
+        const title = card.querySelector('h3');
+        if (title && serviceIndex !== null) {
+            const index = parseInt(serviceIndex);
+            if (translations[currentLang].services[index]) {
+                title.textContent = translations[currentLang].services[index].title;
+            }
         }
     });
 }
@@ -243,17 +250,24 @@ function updateServiceCardsContent() {
  */
 function updateCaseStudiesContent() {
     const caseCards = document.querySelectorAll('.case-card');
-    translations[currentLang].cases.forEach((study, index) => {
-        if (caseCards[index]) {
-            const frontTitle = caseCards[index].querySelector('.case-card-front h3');
-            const frontDescription = caseCards[index].querySelector('.case-card-front p');
-            const backTitle = caseCards[index].querySelector('.case-card-back h4');
-            const backSolution = caseCards[index].querySelector('.case-card-back p');
+    
+    caseCards.forEach(card => {
+        const caseIndex = card.getAttribute('data-case-index');
+        if (caseIndex !== null) {
+            const index = parseInt(caseIndex);
+            const study = translations[currentLang].cases[index];
             
-            if (frontTitle) frontTitle.textContent = study.title;
-            if (frontDescription) frontDescription.textContent = study.description;
-            if (backTitle) backTitle.innerHTML = `<i class="fas fa-sync-alt"></i>${translations[currentLang].solution_text}`;
-            if (backSolution) backSolution.textContent = study.solution;
+            if (study) {
+                const frontTitle = card.querySelector('.case-card-front h3');
+                const frontDescription = card.querySelector('.case-card-front p');
+                const backTitle = card.querySelector('.case-card-back h4');
+                const backSolution = card.querySelector('.case-card-back p');
+                
+                if (frontTitle) frontTitle.textContent = study.title;
+                if (frontDescription) frontDescription.textContent = study.description;
+                if (backTitle) backTitle.innerHTML = `<i class="fas fa-sync-alt"></i>${translations[currentLang].solution_text}`;
+                if (backSolution) backSolution.textContent = study.solution;
+            }
         }
     });
 }
@@ -270,11 +284,11 @@ function generateServiceCards() {
         const slide = document.createElement('div');
         slide.className = 'swiper-slide';
         slide.innerHTML = `
-            <div class="service-card">
+            <div class="service-card" data-service-index="${index}">
                 <div class="service-icon">
-                    <i data-lucide="${serviceIcons[index]}"></i>
+                    <i data-lucide="${serviceIcons[index]}" data-icon-index="${index}"></i>
                 </div>
-                <h3>${service.title}</h3>
+                <h3 data-service-index="${index}">${service.title}</h3>
             </div>
         `;
         container.appendChild(slide);
@@ -296,15 +310,15 @@ function generateCaseStudies() {
         const slide = document.createElement('div');
         slide.className = 'swiper-slide';
         slide.innerHTML = `
-            <div class="case-card" data-case="${index}">
+            <div class="case-card" data-case-index="${index}">
                 <div class="case-card-inner">
                     <div class="case-card-front">
-                        <h3>${study.title}</h3>
-                        <p>${study.description}</p>
+                        <h3 data-case-index="${index}">${study.title}</h3>
+                        <p data-case-index="${index}">${study.description}</p>
                     </div>
                     <div class="case-card-back">
                         <h4><i class="fas fa-sync-alt"></i>${translations[currentLang].solution_text}</h4>
-                        <p>${study.solution}</p>
+                        <p data-case-index="${index}">${study.solution}</p>
                     </div>
                 </div>
             </div>
@@ -414,6 +428,38 @@ function initializeSliders() {
 }
 
 /**
+ * Переключение языка с сохранением позиции слайдера
+ */
+function switchLanguage(isRu) {
+    // Сохраняем текущие позиции слайдеров
+    const servicesActiveIndex = servicesSwiper ? servicesSwiper.activeIndex : 0;
+    const casesActiveIndex = casesSwiper ? casesSwiper.activeIndex : 0;
+    
+    // Обновляем язык
+    currentLang = isRu ? 'ru' : 'en';
+    
+    // Обновляем UI переключателя
+    const langSwitcher = document.querySelector('.lang-switcher');
+    const ruLabel = langSwitcher.querySelector('.lang-label.ru');
+    const enLabel = langSwitcher.querySelector('.lang-label.en');
+    
+    ruLabel.classList.toggle('active', isRu);
+    enLabel.classList.toggle('active', !isRu);
+    langSwitcher.classList.toggle('en-active', !isRu);
+    
+    // Обновляем контент
+    generateAllContent();
+    
+    // Восстанавливаем позиции слайдеров
+    if (servicesSwiper) {
+        servicesSwiper.slideTo(servicesActiveIndex, 0);
+    }
+    if (casesSwiper) {
+        casesSwiper.slideTo(casesActiveIndex, 0);
+    }
+}
+
+/**
  * Настройка интерактивных элементов
  */
 function setupInteractiveElements() {
@@ -424,12 +470,7 @@ function setupInteractiveElements() {
     const toggle = langSwitcher.querySelector('.lang-toggle');
 
     function setLang(isRu) {
-        ruLabel.classList.toggle('active', isRu);
-        enLabel.classList.toggle('active', !isRu);
-        langSwitcher.classList.toggle('en-active', !isRu);
-        currentLang = isRu ? 'ru' : 'en';
-        setActiveLanguageButton();
-        generateAllContent();
+        switchLanguage(isRu);
         setTimeout(initializeSliders, 10);
     }
 
